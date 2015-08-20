@@ -1,0 +1,499 @@
+Sensor Name: System
+Sensor ID: 4026532609
+	Sensor Name: Virtual Memory Commited
+	Sensor Units: MB
+	Sensor Type: SENSOR_TYPE_OTHER
+	Sensor Value: 5558
+
+	Sensor Name: Virtual Memory Available
+	Sensor Units: MB
+	Sensor Type: SENSOR_TYPE_OTHER
+	Sensor Value: 14807
+
+	Sensor Name: Virtual Memory Load
+	Sensor Units: %
+	Sensor Type: SENSOR_TYPE_OTHER
+	Sensor Value: 27
+
+	Sensor Name: Physical Memory Used
+	Sensor Units: MB
+	Sensor Type: SENSOR_TYPE_OTHER
+	Sensor Value: 3581
+
+	Sensor Name: Physical Memory Available
+	Sensor Units: MB
+	Sensor Type: SENSOR_TYPE_OTHER
+	Sensor Value: 12784
+
+	Sensor Name: Physical Memory Load
+	Sensor Units: %
+	Sensor Type: SENSOR_TYPE_OTHER
+	Sensor Value: 21
+
+
+Sensor Name: CPU [#0]: Intel Core-2400
+Sensor ID: 4026532608
+	Sensor Name: Core #0 VID
+	Sensor Units: V
+	Sensor Type: SENSOR_TYPE_VOLT
+	Sensor Value: 1,260986328125
+
+	Sensor Name: Core #1 VID
+	Sensor Units: V
+	Sensor Type: SENSOR_TYPE_VOLT
+	Sensor Value: 1,291015625
+
+	Sensor Name: Core #2 VID
+	Sensor Units: V
+	Sensor Type: SENSOR_TYPE_VOLT
+	Sensor Value: 1,260986328125
+
+	Sensor Name: Core #3 VID
+	Sensor Units: V
+	Sensor Type: SENSOR_TYPE_VOLT
+	Sensor Value: 1,291015625
+
+	Sensor Name: Core #0 Clock
+	Sensor Units: MHz
+	Sensor Type: SENSOR_TYPE_CLOCK
+	Sensor Value: 3189,6194032369
+
+	Sensor Name: Core #1 Clock
+	Sensor Units: MHz
+	Sensor Type: SENSOR_TYPE_CLOCK
+	Sensor Value: 3189,6194032369
+
+	Sensor Name: Core #2 Clock
+	Sensor Units: MHz
+	Sensor Type: SENSOR_TYPE_CLOCK
+	Sensor Value: 3189,6194032369
+
+	Sensor Name: Core #3 Clock
+	Sensor Units: MHz
+	Sensor Type: SENSOR_TYPE_CLOCK
+	Sensor Value: 3189,6194032369
+
+	Sensor Name: Bus Clock
+	Sensor Units: MHz
+	Sensor Type: SENSOR_TYPE_CLOCK
+	Sensor Value: 99,6756063511532
+
+	Sensor Name: Core #0 Thread #0 Usage
+	Sensor Units: %
+	Sensor Type: SENSOR_TYPE_USAGE
+	Sensor Value: 26,4
+
+	Sensor Name: Core #0 Thread #1 Usage
+	Sensor Units: %
+	Sensor Type: SENSOR_TYPE_USAGE
+	Sensor Value: 29,4
+
+	Sensor Name: Core #1 Thread #0 Usage
+	Sensor Units: %
+	Sensor Type: SENSOR_TYPE_USAGE
+	Sensor Value: 23,5
+
+	Sensor Name: Core #1 Thread #1 Usage
+	Sensor Units: %
+	Sensor Type: SENSOR_TYPE_USAGE
+	Sensor Value: 29,4
+
+	Sensor Name: Core #2 Thread #0 Usage
+	Sensor Units: %
+	Sensor Type: SENSOR_TYPE_USAGE
+	Sensor Value: 20,5
+
+	Sensor Name: Core #2 Thread #1 Usage
+	Sensor Units: %
+	Sensor Type: SENSOR_TYPE_USAGE
+	Sensor Value: 8,8
+
+	Sensor Name: Core #3 Thread #0 Usage
+	Sensor Units: %
+	Sensor Type: SENSOR_TYPE_USAGE
+	Sensor Value: 29,4
+
+	Sensor Name: Core #3 Thread #1 Usage
+	Sensor Units: %
+	Sensor Type: SENSOR_TYPE_USAGE
+	Sensor Value: 20,5
+
+	Sensor Name: Max CPU/Thread Usage
+	Sensor Units: %
+	Sensor Type: SENSOR_TYPE_USAGE
+	Sensor Value: 29,4
+
+	Sensor Name: Total CPU Usage
+	Sensor Units: %
+	Sensor Type: SENSOR_TYPE_USAGE
+	Sensor Value: 23,4875
+
+	Sensor Name: On-Demand Clock Modulation
+	Sensor Units: %
+	Sensor Type: SENSOR_TYPE_USAGE
+	Sensor Value: 100
+
+	Sensor Name: Core #0 Thermal Throttling
+	Sensor Units: Yes/No
+	Sensor Type: SENSOR_TYPE_OTHER
+	Sensor Value: 0
+
+	Sensor Name: Core #1 Thermal Throttling
+	Sensor Units: Yes/No
+	Sensor Type: SENSOR_TYPE_OTHER
+	Sensor Value: 0
+
+	Sensor Name: Core #2 Thermal Throttling
+	Sensor Units: Yes/No
+	Sensor Type: SENSOR_TYPE_OTHER
+	Sensor Value: 0
+
+	Sensor Name: Core #3 Thermal Throttling
+	Sensor Units: Yes/No
+	Sensor Type: SENSOR_TYPE_OTHER
+	Sensor Value: 0
+
+	Sensor Name: Core #0 Ratio
+	Sensor Units: x
+	Sensor Type: SENSOR_TYPE_OTHER
+	Sensor Value: 32
+
+	Sensor Name: Core #1 Ratio
+	Sensor Units: x
+	Sensor Type: SENSOR_TYPE_OTHER
+	Sensor Value: 32
+
+	Sensor Name: Core #2 Ratio
+	Sensor Units: x
+	Sensor Type: SENSOR_TYPE_OTHER
+	Sensor Value: 32
+
+	Sensor Name: Core #3 Ratio
+	Sensor Units: x
+	Sensor Type: SENSOR_TYPE_OTHER
+	Sensor Value: 32
+
+
+Sensor Name: CPU [#0]: Intel Core-2400: DTS
+Sensor ID: 4026532864
+	Sensor Name: Core #0
+	Sensor Units: °C
+	Sensor Type: SENSOR_TYPE_TEMP
+	Sensor Value: 53
+
+	Sensor Name: Core #1
+	Sensor Units: °C
+	Sensor Type: SENSOR_TYPE_TEMP
+	Sensor Value: 59
+
+	Sensor Name: Core #2
+	Sensor Units: °C
+	Sensor Type: SENSOR_TYPE_TEMP
+	Sensor Value: 58
+
+	Sensor Name: Core #3
+	Sensor Units: °C
+	Sensor Type: SENSOR_TYPE_TEMP
+	Sensor Value: 52
+
+	Sensor Name: Core Max
+	Sensor Units: °C
+	Sensor Type: SENSOR_TYPE_TEMP
+	Sensor Value: 59
+
+
+Sensor Name: CPU [#0]: Intel Core-2400
+Sensor ID: 4026542592
+	Sensor Name: CPU Package
+	Sensor Units: °C
+	Sensor Type: SENSOR_TYPE_TEMP
+	Sensor Value: 60
+
+	Sensor Name: CPU IA Cores
+	Sensor Units: °C
+	Sensor Type: SENSOR_TYPE_TEMP
+	Sensor Value: 60
+
+	Sensor Name: CPU GT Cores
+	Sensor Units: °C
+	Sensor Type: SENSOR_TYPE_TEMP
+	Sensor Value: 56
+
+	Sensor Name: CPU Package Power
+	Sensor Units: W
+	Sensor Type: SENSOR_TYPE_POWER
+	Sensor Value: 36,3974277258017
+
+	Sensor Name: IA Cores Power
+	Sensor Units: W
+	Sensor Type: SENSOR_TYPE_POWER
+	Sensor Value: 31,8021712974013
+
+	Sensor Name: GT Cores Power
+	Sensor Units: W
+	Sensor Type: SENSOR_TYPE_POWER
+	Sensor Value: 0,121856627424529
+
+
+Sensor Name: Drive: WDC WD7500BPKT-00PK4T0
+Sensor ID: 4026532097
+	Sensor Name: Read Activity
+	Sensor Units: %
+	Sensor Type: SENSOR_TYPE_USAGE
+	Sensor Value: 1E-06
+
+	Sensor Name: Write Activity
+	Sensor Units: %
+	Sensor Type: SENSOR_TYPE_USAGE
+	Sensor Value: 1E-06
+
+	Sensor Name: Total Activity
+	Sensor Units: %
+	Sensor Type: SENSOR_TYPE_USAGE
+	Sensor Value: 1E-06
+
+	Sensor Name: Read Rate
+	Sensor Units: MB/s
+	Sensor Type: SENSOR_TYPE_OTHER
+	Sensor Value: 1E-06
+
+	Sensor Name: Write Rate
+	Sensor Units: MB/s
+	Sensor Type: SENSOR_TYPE_OTHER
+	Sensor Value: 1E-06
+
+
+Sensor Name: Drive: SAMSUNG SSD 830 Series
+Sensor ID: 4026532097
+	Sensor Name: Read Activity
+	Sensor Units: %
+	Sensor Type: SENSOR_TYPE_USAGE
+	Sensor Value: 0,018
+
+	Sensor Name: Write Activity
+	Sensor Units: %
+	Sensor Type: SENSOR_TYPE_USAGE
+	Sensor Value: 0,357
+
+	Sensor Name: Total Activity
+	Sensor Units: %
+	Sensor Type: SENSOR_TYPE_USAGE
+	Sensor Value: 0,375
+
+	Sensor Name: Read Rate
+	Sensor Units: MB/s
+	Sensor Type: SENSOR_TYPE_OTHER
+	Sensor Value: 0,015
+
+	Sensor Name: Write Rate
+	Sensor Units: MB/s
+	Sensor Type: SENSOR_TYPE_OTHER
+	Sensor Value: 0,578
+
+
+Sensor Name: COMPAL EC
+Sensor ID: 4041998849
+
+Sensor Name: GPU [#0]: NVIDIA GeForce GTX 880M: 
+Sensor ID: 3758104576
+	Sensor Name: GPU Temperature
+	Sensor Units: °C
+	Sensor Type: SENSOR_TYPE_TEMP
+	Sensor Value: 59
+
+	Sensor Name: GPU Temperature (HW)
+	Sensor Units: °C
+	Sensor Type: SENSOR_TYPE_TEMP
+	Sensor Value: 58
+
+	Sensor Name: GPU Core Voltage
+	Sensor Units: V
+	Sensor Type: SENSOR_TYPE_VOLT
+	Sensor Value: 0,862
+
+	Sensor Name: GPU Clock
+	Sensor Units: MHz
+	Sensor Type: SENSOR_TYPE_CLOCK
+	Sensor Value: 405
+
+	Sensor Name: GPU Memory Clock
+	Sensor Units: MHz
+	Sensor Type: SENSOR_TYPE_CLOCK
+	Sensor Value: 1002,375
+
+	Sensor Name: GPU Video Clock
+	Sensor Units: MHz
+	Sensor Type: SENSOR_TYPE_CLOCK
+	Sensor Value: 540
+
+	Sensor Name: GPU Core Load
+	Sensor Units: %
+	Sensor Type: SENSOR_TYPE_USAGE
+	Sensor Value: 1E-06
+
+	Sensor Name: GPU Memory Controller Load
+	Sensor Units: %
+	Sensor Type: SENSOR_TYPE_USAGE
+	Sensor Value: 1E-06
+
+	Sensor Name: GPU Video Engine Load
+	Sensor Units: %
+	Sensor Type: SENSOR_TYPE_USAGE
+	Sensor Value: 1E-06
+
+	Sensor Name: GPU Video Bus Load
+	Sensor Units: %
+	Sensor Type: SENSOR_TYPE_USAGE
+	Sensor Value: 1E-06
+
+	Sensor Name: GPU Memory Usage
+	Sensor Units: %
+	Sensor Type: SENSOR_TYPE_USAGE
+	Sensor Value: 5,7342529296875
+
+	Sensor Name: GPU Memory Allocated
+	Sensor Units: MB
+	Sensor Type: SENSOR_TYPE_OTHER
+	Sensor Value: 469,75
+
+	Sensor Name: PCIe Link Speed
+	Sensor Units: Gbps
+	Sensor Type: SENSOR_TYPE_OTHER
+	Sensor Value: 5
+
+
+Sensor Name: GPU [#1]: NVIDIA GeForce GTX 880M: 
+Sensor ID: 3758104576
+	Sensor Name: GPU Temperature
+	Sensor Units: °C
+	Sensor Type: SENSOR_TYPE_TEMP
+	Sensor Value: 47
+
+	Sensor Name: GPU Temperature (HW)
+	Sensor Units: °C
+	Sensor Type: SENSOR_TYPE_TEMP
+	Sensor Value: 46
+
+	Sensor Name: GPU Core Voltage
+	Sensor Units: V
+	Sensor Type: SENSOR_TYPE_VOLT
+	Sensor Value: 0,862
+
+	Sensor Name: GPU Clock
+	Sensor Units: MHz
+	Sensor Type: SENSOR_TYPE_CLOCK
+	Sensor Value: 405
+
+	Sensor Name: GPU Memory Clock
+	Sensor Units: MHz
+	Sensor Type: SENSOR_TYPE_CLOCK
+	Sensor Value: 1002,375
+
+	Sensor Name: GPU Video Clock
+	Sensor Units: MHz
+	Sensor Type: SENSOR_TYPE_CLOCK
+	Sensor Value: 540
+
+	Sensor Name: GPU Core Load
+	Sensor Units: %
+	Sensor Type: SENSOR_TYPE_USAGE
+	Sensor Value: 1E-06
+
+	Sensor Name: GPU Memory Controller Load
+	Sensor Units: %
+	Sensor Type: SENSOR_TYPE_USAGE
+	Sensor Value: 1E-06
+
+	Sensor Name: GPU Video Engine Load
+	Sensor Units: %
+	Sensor Type: SENSOR_TYPE_USAGE
+	Sensor Value: 8
+
+	Sensor Name: GPU Video Bus Load
+	Sensor Units: %
+	Sensor Type: SENSOR_TYPE_USAGE
+	Sensor Value: 1E-06
+
+	Sensor Name: GPU Memory Usage
+	Sensor Units: %
+	Sensor Type: SENSOR_TYPE_USAGE
+	Sensor Value: 5,7342529296875
+
+	Sensor Name: GPU D3D Usage
+	Sensor Units: %
+	Sensor Type: SENSOR_TYPE_USAGE
+	Sensor Value: 2,72875939849624
+
+	Sensor Name: GPU Memory Allocated
+	Sensor Units: MB
+	Sensor Type: SENSOR_TYPE_OTHER
+	Sensor Value: 469,75
+
+	Sensor Name: GPU D3D Memory Dedicated
+	Sensor Units: MB
+	Sensor Type: SENSOR_TYPE_OTHER
+	Sensor Value: 312,47265625
+
+	Sensor Name: GPU D3D Memory Dynamic
+	Sensor Units: MB
+	Sensor Type: SENSOR_TYPE_OTHER
+	Sensor Value: 31,30078125
+
+	Sensor Name: PCIe Link Speed
+	Sensor Units: Gbps
+	Sensor Type: SENSOR_TYPE_OTHER
+	Sensor Value: 5
+
+
+Sensor Name: Battery
+Sensor ID: 4026579456
+	Sensor Name: Battery Voltage
+	Sensor Units: V
+	Sensor Type: SENSOR_TYPE_VOLT
+	Sensor Value: 16,594
+
+	Sensor Name: Remaining Capacity
+	Sensor Units: Wh
+	Sensor Type: SENSOR_TYPE_OTHER
+	Sensor Value: 95,66
+
+	Sensor Name: Charge Level
+	Sensor Units: %
+	Sensor Type: SENSOR_TYPE_OTHER
+	Sensor Value: 100
+
+
+Sensor Name: RTSS
+Sensor ID: 4027535360
+	Sensor Name: Frames per Second
+	Sensor Units: FPS
+	Sensor Type: SENSOR_TYPE_OTHER
+	Sensor Value: 0,659848234905972
+
+
+Sensor Name: Network: Qualcomm/Atheros AR8151 PCI-E Gigabit Ethernet Controller (L1c)
+Sensor ID: 4026591744
+
+Sensor Name: Network: Intel Centrino Advanced-N 6200 AGN 2x2 HMC WiFi Adapter
+Sensor ID: 4026591744
+	Sensor Name: Total DL
+	Sensor Units: MB
+	Sensor Type: SENSOR_TYPE_OTHER
+	Sensor Value: 305,075450897217
+
+	Sensor Name: Total UP
+	Sensor Units: MB
+	Sensor Type: SENSOR_TYPE_OTHER
+	Sensor Value: 15,9586458206177
+
+	Sensor Name: Current DL rate
+	Sensor Units: KB/s
+	Sensor Type: SENSOR_TYPE_OTHER
+	Sensor Value: 1E-06
+
+	Sensor Name: Current UP rate
+	Sensor Units: KB/s
+	Sensor Type: SENSOR_TYPE_OTHER
+	Sensor Value: 1E-06
+
+

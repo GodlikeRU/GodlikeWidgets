@@ -1,0 +1,310 @@
+dwSensorID : 4026532609
+dwSensorInst : 0
+szSensorNameOrig : System
+szSensorNameUser : System
+dwSensorID : 4026532608
+dwSensorInst : 0
+szSensorNameOrig : CPU [#0]: Intel Core-2400
+szSensorNameUser : CPU [#0]: Intel Core-2400
+dwSensorID : 4026532864
+dwSensorInst : 0
+szSensorNameOrig : CPU [#0]: Intel Core-2400: DTS
+szSensorNameUser : CPU [#0]: Intel Core-2400: DTS
+dwSensorID : 4026542592
+dwSensorInst : 0
+szSensorNameOrig : CPU [#0]: Intel Core-2400
+szSensorNameUser : CPU [#0]: Intel Core-2400
+dwSensorID : 4026532097
+dwSensorInst : 0
+szSensorNameOrig : Drive: WDC WD7500BPKT-00PK4T0
+szSensorNameUser : Drive: WDC WD7500BPKT-00PK4T0
+dwSensorID : 4026532097
+dwSensorInst : 1
+szSensorNameOrig : Drive: SAMSUNG SSD 830 Series
+szSensorNameUser : Drive: SAMSUNG SSD 830 Series
+dwSensorID : 4041998849
+dwSensorInst : 0
+szSensorNameOrig : COMPAL EC
+szSensorNameUser : COMPAL EC
+dwSensorID : 3758104576
+dwSensorInst : 0
+szSensorNameOrig : GPU [#0]: NVIDIA GeForce GTX 880M: 
+szSensorNameUser : GPU [#0]: NVIDIA GeForce GTX 880M: 
+dwSensorID : 3758104576
+dwSensorInst : 20
+szSensorNameOrig : GPU [#1]: NVIDIA GeForce GTX 880M: 
+szSensorNameUser : GPU [#1]: NVIDIA GeForce GTX 880M: 
+dwSensorID : 4026579456
+dwSensorInst : 0
+szSensorNameOrig : Battery
+szSensorNameUser : Battery
+dwSensorID : 4027535360
+dwSensorInst : 0
+szSensorNameOrig : RTSS
+szSensorNameUser : RTSS
+dwSensorID : 4026591744
+dwSensorInst : 0
+szSensorNameOrig : Network: Qualcomm/Atheros AR8151 PCI-E Gigabit Ethernet Controller (L1c)
+szSensorNameUser : Network: Qualcomm/Atheros AR8151 PCI-E Gigabit Ethernet Controller (L1c)
+dwSensorID : 4026591744
+dwSensorInst : 1
+szSensorNameOrig : Network: Intel Centrino Advanced-N 6200 AGN 2x2 HMC WiFi Adapter
+szSensorNameUser : Network: Intel Centrino Advanced-N 6200 AGN 2x2 HMC WiFi Adapter
+tReading : SENSOR_TYPE_OTHER
+dwSensorIndex : 0 ; Sensor Name: System
+dwReadingID : 0
+szLabelUser : Virtual Memory Commited
+szUnit : MB
+Value : 5747
+tReading : SENSOR_TYPE_OTHER
+dwSensorIndex : 0 ; Sensor Name: System
+dwReadingID : 0
+szLabelUser : Virtual Memory Available
+szUnit : MB
+Value : 14618
+tReading : SENSOR_TYPE_OTHER
+dwSensorIndex : 0 ; Sensor Name: System
+dwReadingID : 0
+szLabelUser : Virtual Memory Load
+szUnit : %
+Value : 28
+tReading : SENSOR_TYPE_OTHER
+dwSensorIndex : 0 ; Sensor Name: System
+dwReadingID : 0
+szLabelUser : Physical Memory Used
+szUnit : MB
+Value : 4637
+tReading : SENSOR_TYPE_OTHER
+dwSensorIndex : 0 ; Sensor Name: System
+dwReadingID : 0
+szLabelUser : Physical Memory Available
+szUnit : MB
+Value : 11728
+tReading : SENSOR_TYPE_OTHER
+dwSensorIndex : 0 ; Sensor Name: System
+dwReadingID : 0
+szLabelUser : Physical Memory Load
+szUnit : %
+Value : 28
+tReading : SENSOR_TYPE_OTHER
+dwSensorIndex : 1 ; Sensor Name: CPU [#0]: Intel Core-2400
+dwReadingID : 1
+szLabelUser : Core #0 Thermal Throttling
+szUnit : Yes/No
+Value : 0
+tReading : SENSOR_TYPE_OTHER
+dwSensorIndex : 1 ; Sensor Name: CPU [#0]: Intel Core-2400
+dwReadingID : 1
+szLabelUser : Core #1 Thermal Throttling
+szUnit : Yes/No
+Value : 0
+tReading : SENSOR_TYPE_OTHER
+dwSensorIndex : 1 ; Sensor Name: CPU [#0]: Intel Core-2400
+dwReadingID : 1
+szLabelUser : Core #2 Thermal Throttling
+szUnit : Yes/No
+Value : 0
+tReading : SENSOR_TYPE_OTHER
+dwSensorIndex : 1 ; Sensor Name: CPU [#0]: Intel Core-2400
+dwReadingID : 1
+szLabelUser : Core #3 Thermal Throttling
+szUnit : Yes/No
+Value : 0
+tReading : SENSOR_TYPE_OTHER
+dwSensorIndex : 1 ; Sensor Name: CPU [#0]: Intel Core-2400
+dwReadingID : 1
+szLabelUser : Core #0 Ratio
+szUnit : x
+Value : 35
+tReading : SENSOR_TYPE_OTHER
+dwSensorIndex : 1 ; Sensor Name: CPU [#0]: Intel Core-2400
+dwReadingID : 1
+szLabelUser : Core #1 Ratio
+szUnit : x
+Value : 32
+tReading : SENSOR_TYPE_OTHER
+dwSensorIndex : 1 ; Sensor Name: CPU [#0]: Intel Core-2400
+dwReadingID : 1
+szLabelUser : Core #2 Ratio
+szUnit : x
+Value : 35
+tReading : SENSOR_TYPE_OTHER
+dwSensorIndex : 1 ; Sensor Name: CPU [#0]: Intel Core-2400
+dwReadingID : 1
+szLabelUser : Core #3 Ratio
+szUnit : x
+Value : 32
+tReading : SENSOR_TYPE_TEMP
+dwSensorIndex : 2 ; Sensor Name: CPU [#0]: Intel Core-2400: DTS
+dwReadingID : 2
+szLabelUser : Core #0
+szUnit : °C
+Value : 57
+tReading : SENSOR_TYPE_TEMP
+dwSensorIndex : 2 ; Sensor Name: CPU [#0]: Intel Core-2400: DTS
+dwReadingID : 2
+szLabelUser : Core #1
+szUnit : °C
+Value : 69
+tReading : SENSOR_TYPE_TEMP
+dwSensorIndex : 2 ; Sensor Name: CPU [#0]: Intel Core-2400: DTS
+dwReadingID : 2
+szLabelUser : Core #2
+szUnit : °C
+Value : 61
+tReading : SENSOR_TYPE_TEMP
+dwSensorIndex : 2 ; Sensor Name: CPU [#0]: Intel Core-2400: DTS
+dwReadingID : 2
+szLabelUser : Core #3
+szUnit : °C
+Value : 57
+tReading : SENSOR_TYPE_TEMP
+dwSensorIndex : 2 ; Sensor Name: CPU [#0]: Intel Core-2400: DTS
+dwReadingID : 2
+szLabelUser : Core Max
+szUnit : °C
+Value : 69
+tReading : SENSOR_TYPE_TEMP
+dwSensorIndex : 3 ; Sensor Name: CPU [#0]: Intel Core-2400
+dwReadingID : 3
+szLabelUser : CPU Package
+szUnit : °C
+Value : 69
+tReading : SENSOR_TYPE_TEMP
+dwSensorIndex : 3 ; Sensor Name: CPU [#0]: Intel Core-2400
+dwReadingID : 3
+szLabelUser : CPU IA Cores
+szUnit : °C
+Value : 69
+tReading : SENSOR_TYPE_TEMP
+dwSensorIndex : 3 ; Sensor Name: CPU [#0]: Intel Core-2400
+dwReadingID : 3
+szLabelUser : CPU GT Cores
+szUnit : °C
+Value : 61
+tReading : SENSOR_TYPE_OTHER
+dwSensorIndex : 4 ; Sensor Name: Drive: WDC WD7500BPKT-00PK4T0
+dwReadingID : 4
+szLabelUser : Read Rate
+szUnit : MB/s
+Value : 1E-06
+tReading : SENSOR_TYPE_OTHER
+dwSensorIndex : 4 ; Sensor Name: Drive: WDC WD7500BPKT-00PK4T0
+dwReadingID : 4
+szLabelUser : Write Rate
+szUnit : MB/s
+Value : 1E-06
+tReading : SENSOR_TYPE_OTHER
+dwSensorIndex : 5 ; Sensor Name: Drive: SAMSUNG SSD 830 Series
+dwReadingID : 5
+szLabelUser : Read Rate
+szUnit : MB/s
+Value : 1E-06
+tReading : SENSOR_TYPE_OTHER
+dwSensorIndex : 5 ; Sensor Name: Drive: SAMSUNG SSD 830 Series
+dwReadingID : 5
+szLabelUser : Write Rate
+szUnit : MB/s
+Value : 1E-06
+tReading : SENSOR_TYPE_TEMP
+dwSensorIndex : 7 ; Sensor Name: GPU [#0]: NVIDIA GeForce GTX 880M: 
+dwReadingID : 7
+szLabelUser : GPU Temperature
+szUnit : °C
+Value : 58
+tReading : SENSOR_TYPE_TEMP
+dwSensorIndex : 7 ; Sensor Name: GPU [#0]: NVIDIA GeForce GTX 880M: 
+dwReadingID : 7
+szLabelUser : GPU Temperature (HW)
+szUnit : °C
+Value : 57
+tReading : SENSOR_TYPE_OTHER
+dwSensorIndex : 7 ; Sensor Name: GPU [#0]: NVIDIA GeForce GTX 880M: 
+dwReadingID : 7
+szLabelUser : GPU Memory Allocated
+szUnit : MB
+Value : 578,515625
+tReading : SENSOR_TYPE_OTHER
+dwSensorIndex : 7 ; Sensor Name: GPU [#0]: NVIDIA GeForce GTX 880M: 
+dwReadingID : 7
+szLabelUser : PCIe Link Speed
+szUnit : Gbps
+Value : 5
+tReading : SENSOR_TYPE_TEMP
+dwSensorIndex : 8 ; Sensor Name: GPU [#1]: NVIDIA GeForce GTX 880M: 
+dwReadingID : 8
+szLabelUser : GPU Temperature
+szUnit : °C
+Value : 60
+tReading : SENSOR_TYPE_TEMP
+dwSensorIndex : 8 ; Sensor Name: GPU [#1]: NVIDIA GeForce GTX 880M: 
+dwReadingID : 8
+szLabelUser : GPU Temperature (HW)
+szUnit : °C
+Value : 60
+tReading : SENSOR_TYPE_OTHER
+dwSensorIndex : 8 ; Sensor Name: GPU [#1]: NVIDIA GeForce GTX 880M: 
+dwReadingID : 8
+szLabelUser : GPU Memory Allocated
+szUnit : MB
+Value : 578,515625
+tReading : SENSOR_TYPE_OTHER
+dwSensorIndex : 8 ; Sensor Name: GPU [#1]: NVIDIA GeForce GTX 880M: 
+dwReadingID : 8
+szLabelUser : GPU D3D Memory Dedicated
+szUnit : MB
+Value : 421,23828125
+tReading : SENSOR_TYPE_OTHER
+dwSensorIndex : 8 ; Sensor Name: GPU [#1]: NVIDIA GeForce GTX 880M: 
+dwReadingID : 8
+szLabelUser : GPU D3D Memory Dynamic
+szUnit : MB
+Value : 28,03515625
+tReading : SENSOR_TYPE_OTHER
+dwSensorIndex : 8 ; Sensor Name: GPU [#1]: NVIDIA GeForce GTX 880M: 
+dwReadingID : 8
+szLabelUser : PCIe Link Speed
+szUnit : Gbps
+Value : 5
+tReading : SENSOR_TYPE_OTHER
+dwSensorIndex : 9 ; Sensor Name: Battery
+dwReadingID : 9
+szLabelUser : Remaining Capacity
+szUnit : Wh
+Value : 95,66
+tReading : SENSOR_TYPE_OTHER
+dwSensorIndex : 9 ; Sensor Name: Battery
+dwReadingID : 9
+szLabelUser : Charge Level
+szUnit : %
+Value : 100
+tReading : SENSOR_TYPE_OTHER
+dwSensorIndex : 10 ; Sensor Name: RTSS
+dwReadingID : 10
+szLabelUser : Frames per Second
+szUnit : FPS
+Value : 11,2951807228916
+tReading : SENSOR_TYPE_OTHER
+dwSensorIndex : 12 ; Sensor Name: Network: Intel Centrino Advanced-N 6200 AGN 2x2 HMC WiFi Adapter
+dwReadingID : 12
+szLabelUser : Total DL
+szUnit : MB
+Value : 76,2620935440063
+tReading : SENSOR_TYPE_OTHER
+dwSensorIndex : 12 ; Sensor Name: Network: Intel Centrino Advanced-N 6200 AGN 2x2 HMC WiFi Adapter
+dwReadingID : 12
+szLabelUser : Total UP
+szUnit : MB
+Value : 6,6286506652832
+tReading : SENSOR_TYPE_OTHER
+dwSensorIndex : 12 ; Sensor Name: Network: Intel Centrino Advanced-N 6200 AGN 2x2 HMC WiFi Adapter
+dwReadingID : 12
+szLabelUser : Current DL rate
+szUnit : KB/s
+Value : 1,60445190256046
+tReading : SENSOR_TYPE_OTHER
+dwSensorIndex : 12 ; Sensor Name: Network: Intel Centrino Advanced-N 6200 AGN 2x2 HMC WiFi Adapter
+dwReadingID : 12
+szLabelUser : Current UP rate
+szUnit : KB/s
+Value : 5,83159228307255

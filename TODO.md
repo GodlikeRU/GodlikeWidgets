@@ -1,4 +1,10 @@
 - [x] Initial work
+- [ ] Resolution flexibility
+- [ ] Ability to move Windows
+- [ ] Code cleanup
+- [ ] Right click context menu on every control
+- [ ] Sticky notes control
+- [ ] RSS control
 - [ ] Better Config (configurator?)
 - [ ] Code Optimization
 - [ ] Themes

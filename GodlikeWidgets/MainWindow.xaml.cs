@@ -41,7 +41,7 @@ namespace GodlikeWidgets
 
         private bool TEST_MODE = false; // Debug mode = Writing info to file
 
-        private int SLEEP_INTERVAL = 500; // Should match HWiNFO64 Refresh Value!
+        private int SLEEP_INTERVAL = 500; // Should match HWiNFO64 Refresh Value! Lower = Higher cpu usage but faster refresh
         private int CHARTS_NODES = 60; //Higher = Higher cpu usage but more values on chart
 
         private string CONFIG_NETWORK_SENSOR_NAME = "Network: Intel Centrino Advanced-N 6200 AGN 2x2 HMC WiFi Adapter";
@@ -179,6 +179,7 @@ namespace GodlikeWidgets
             this.sensorElementsDataArray = hwW.GetSensorData();
             this.DriveDataList = DriveInfo.GetDrives();
 
+            #region TEST MODE
             // DEBUG PURPOSES ONLY
             if (TEST_MODE)
             {
@@ -212,6 +213,7 @@ namespace GodlikeWidgets
                 sw.Close();
                 fs.Close();
             }
+            #endregion
 
             // Initialize lists, just one time
             this.cPUChartValueList = new List<KeyValuePair<string, int>>();
@@ -261,19 +263,18 @@ namespace GodlikeWidgets
                             try
                             {
 
-                                
-
-                                
                                 /*
                                  *  Data Read
                                 */
-                                label_cc_CPUCLOCK.Content = Math.Round(this.sensorElementsDataArray.Find(f => f.szName == "CPU [#0]: Intel Core-2400").sensorReaders.Find(f => f.szName == "Core #0 Clock").Value).ToString() + " " + this.sensorElementsDataArray.Find(f => f.szName == "CPU [#0]: Intel Core-2400").sensorReaders.Find(f => f.szName == "Core #0 Clock").szUnit;
-                                label_cc_CPUPOWER.Content = Math.Round(this.sensorElementsDataArray.Find(f => f.dwSensorID == 4026542592).sensorReaders.Find(f => f.szName == "CPU Package Power").Value, 1).ToString() + " " + this.sensorElementsDataArray.Find(f => f.dwSensorID == 4026542592).sensorReaders.Find(f => f.szName == "CPU Package Power").szUnit;
+                               
                                 int iCPUcore1_usage = Convert.ToInt32(this.sensorElementsDataArray.Find(f => f.szName == "CPU [#0]: Intel Core-2400").sensorReaders.Find(f => f.szName == "Core #0 Thread #0 Usage").Value);
                                 int iCPUcore2_usage = Convert.ToInt32(this.sensorElementsDataArray.Find(f => f.dwSensorID == 4026532608).sensorReaders.Find(f => f.szName == "Core #1 Thread #0 Usage").Value);
                                 int iCPUcore3_usage = Convert.ToInt32(this.sensorElementsDataArray.Find(f => f.dwSensorID == 4026532608).sensorReaders.Find(f => f.szName == "Core #2 Thread #0 Usage").Value);
                                 int iCPUcore4_usage = Convert.ToInt32(this.sensorElementsDataArray.Find(f => f.dwSensorID == 4026532608).sensorReaders.Find(f => f.szName == "Core #3 Thread #0 Usage").Value);
                                 int iCPUtotal_usage = Convert.ToInt32(this.sensorElementsDataArray.Find(f => f.dwSensorID == 4026532608).sensorReaders.Find(f => f.szName == "Total CPU Usage").Value);
+                                double fCPUCLOCK = Math.Round(this.sensorElementsDataArray.Find(f => f.szName == "CPU [#0]: Intel Core-2400").sensorReaders.Find(f => f.szName == "Core #0 Clock").Value);
+                                double fCPUPOWER = Math.Round(this.sensorElementsDataArray.Find(f => f.dwSensorID == 4026542592).sensorReaders.Find(f => f.szName == "CPU Package Power").Value, 1);
+                                int iCPUTEMPERATURE = Convert.ToInt32(this.sensorElementsDataArray.Find(f => f.dwSensorID == 4026542592).sensorReaders.Find(f => f.szName == "CPU Package").Value);
 
                                 // Memory
                                 int memoryUsed = Convert.ToInt32(this.sensorElementsDataArray.Find(f => f.szName == "System").sensorReaders.Find(f => f.szName == "Physical Memory Used").Value);
@@ -321,7 +322,10 @@ namespace GodlikeWidgets
                                  *  Data Write
                                 */
                                 
-
+                                //CPU
+                                label_cc_CPUCLOCK.Content = fCPUCLOCK.ToString() + " " + this.sensorElementsDataArray.Find(f => f.szName == "CPU [#0]: Intel Core-2400").sensorReaders.Find(f => f.szName == "Core #0 Clock").szUnit;
+                                label_cc_CPUPOWER.Content = fCPUPOWER.ToString() + " " + this.sensorElementsDataArray.Find(f => f.dwSensorID == 4026542592).sensorReaders.Find(f => f.szName == "CPU Package Power").szUnit;
+                                //label_cc_CPUTEMPERATURE.Content = iCPUTEMPERATURE.ToString() + " " + this.sensorElementsDataArray.Find(f => f.dwSensorID == 4026542592).sensorReaders.Find(f => f.szName == "CPU Package").szUnit;
                                 // RAM
                                 label_cc_FreeRAM.Content = memoryAvailable.ToString() + " " + this.sensorElementsDataArray.Find(f => f.szName == "System").sensorReaders.Find(f => f.szName == "Physical Memory Used").szUnit;
                                 label_cc_UsedRAM.Content = memoryUsed.ToString() + " " + this.sensorElementsDataArray.Find(f => f.szName == "System").sensorReaders.Find(f => f.szName == "Physical Memory Used").szUnit;

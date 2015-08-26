@@ -19,8 +19,10 @@ using System.IO;
 using System.Windows.Threading;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
+using System.Collections.ObjectModel;
 using HWiNFO64Sensors;
 using HWiNFO64Sensors.Structures;
+using GodlikeWidgets.Data;
 
 
 
@@ -50,6 +52,12 @@ namespace GodlikeWidgets
         private string CONFIG_DISK1_SENSOR_NAME = "SAMSUNG";
         private string CONFIG_DISK2_SENSOR_NAME = "WDC";
 
+        // Reserved for future use
+        #pragma warning disable 0414
+        private bool CONFIG_USES_CPU_CHART = true;
+        private bool CONFIG_USES_NETWORK_CHART = true;
+        #pragma warning restore 0414
+
         /*
          * END CONFIG VALUES
         */
@@ -59,8 +67,8 @@ namespace GodlikeWidgets
         private HWiNFOWrapper hwW;
         
         
-        private List<KeyValuePair<string, int>> cPUChartValueList;
-        private List<KeyValuePair<string, int>> networkChartValueList;
+        /*private List<KeyValuePair<string, int>> cPUChartValueList;
+        private List<KeyValuePair<string, int>> networkChartValueList;*/
         private List<Struct_SensorElement> sensorElementsDataArray;
         private Dictionary<string, int> processUsageList;
         private DriveInfo[] DriveDataList;
@@ -142,7 +150,14 @@ namespace GodlikeWidgets
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown(); 
+            //Application.Current.Shutdown(); 
+            Test test = new Test();
+            test.Activate();
+            test.Visibility = System.Windows.Visibility.Visible;
+
+            test.Left = 250;
+            test.Top = 250;
+            
         }
 
         // Additional prevent minimize if WM_SYSCOMMAND fails
@@ -153,6 +168,7 @@ namespace GodlikeWidgets
 
         }
         #endregion
+
 
         public MainWindow()
         {
@@ -216,19 +232,20 @@ namespace GodlikeWidgets
             #endregion
 
             // Initialize lists, just one time
-            this.cPUChartValueList = new List<KeyValuePair<string, int>>();
-            this.networkChartValueList = new List<KeyValuePair<string, int>>();
+            Database.CPU_CHART_VALUES = new ObservableCollection<KeyValuePair<string, int>>();
+            Database.NETWORK_CHART_VALUES = new ObservableCollection<KeyValuePair<string, int>>();
             this.processUsageList = new Dictionary<string, int>();
 
             // Fil charts with zeroes
-            for (int i = 0; i < CHARTS_NODES+1; i++)
+            for (int i = 0; i < CHARTS_NODES + 1; i++)
             {
-                cPUChartValueList.Add(new KeyValuePair<string, int>(i.ToString(), 0));
+                Database.CPU_CHART_VALUES.Add(new KeyValuePair<string, int>(i.ToString(), 0));
             }
+
 
             for (int i = 0; i < CHARTS_NODES+1; i++)
             {
-                networkChartValueList.Add(new KeyValuePair<string, int>(i.ToString(), 0));
+                Database.NETWORK_CHART_VALUES.Add(new KeyValuePair<string, int>(i.ToString(), 0));
             }
 
             // Start ReadData Thread
@@ -266,7 +283,8 @@ namespace GodlikeWidgets
                                 /*
                                  *  Data Read
                                 */
-                               
+                                #region Read
+
                                 int iCPUcore1_usage = Convert.ToInt32(this.sensorElementsDataArray.Find(f => f.szName == "CPU [#0]: Intel Core-2400").sensorReaders.Find(f => f.szName == "Core #0 Thread #0 Usage").Value);
                                 int iCPUcore2_usage = Convert.ToInt32(this.sensorElementsDataArray.Find(f => f.dwSensorID == 4026532608).sensorReaders.Find(f => f.szName == "Core #1 Thread #0 Usage").Value);
                                 int iCPUcore3_usage = Convert.ToInt32(this.sensorElementsDataArray.Find(f => f.dwSensorID == 4026532608).sensorReaders.Find(f => f.szName == "Core #2 Thread #0 Usage").Value);
@@ -317,75 +335,104 @@ namespace GodlikeWidgets
                                 double Disk2_DiskUsage = Math.Round(this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_DISK2_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "Total Activity").Value, 1);
                                 double Disk2_TotalSpace = Math.Round((((double)this.DriveDataList.First(f => f.Name == @"F:\").TotalSize / 1048576) / 1024), 1);
                                 double Disk2_FreeSpace = Math.Round((((double)this.DriveDataList.First(f => f.Name == @"F:\").TotalFreeSpace / 1048576) / 1024), 1);
-                                
+
+                                #endregion
+
                                 /*
                                  *  Data Write
                                 */
-                                
+                                #region Write
+
                                 //CPU
-                                label_cc_CPUCLOCK.Content = fCPUCLOCK.ToString() + " " + this.sensorElementsDataArray.Find(f => f.szName == "CPU [#0]: Intel Core-2400").sensorReaders.Find(f => f.szName == "Core #0 Clock").szUnit;
-                                label_cc_CPUPOWER.Content = fCPUPOWER.ToString() + " " + this.sensorElementsDataArray.Find(f => f.dwSensorID == 4026542592).sensorReaders.Find(f => f.szName == "CPU Package Power").szUnit;
-                                //label_cc_CPUTEMPERATURE.Content = iCPUTEMPERATURE.ToString() + " " + this.sensorElementsDataArray.Find(f => f.dwSensorID == 4026542592).sensorReaders.Find(f => f.szName == "CPU Package").szUnit;
+                                Database.CPU_CPUCLOCK = fCPUCLOCK.ToString() + " MHz"; // + this.sensorElementsDataArray.Find(f => f.szName == "CPU [#0]: Intel Core-2400").sensorReaders.Find(f => f.szName == "Core #0 Clock").szUnit;
+                                Database.CPU_CPUPOWER = fCPUPOWER.ToString() + " MHz"; // +this.sensorElementsDataArray.Find(f => f.dwSensorID == 4026542592).sensorReaders.Find(f => f.szName == "CPU Package Power").szUnit;
+                                Database.CPU_CPUTEMPERATURE = iCPUTEMPERATURE.ToString() + " °C";// +this.sensorElementsDataArray.Find(f => f.dwSensorID == 4026542592).sensorReaders.Find(f => f.szName == "CPU Package").szUnit;
+                                
                                 // RAM
-                                label_cc_FreeRAM.Content = memoryAvailable.ToString() + " " + this.sensorElementsDataArray.Find(f => f.szName == "System").sensorReaders.Find(f => f.szName == "Physical Memory Used").szUnit;
-                                label_cc_UsedRAM.Content = memoryUsed.ToString() + " " + this.sensorElementsDataArray.Find(f => f.szName == "System").sensorReaders.Find(f => f.szName == "Physical Memory Used").szUnit;
-                                Memory_UsageBar.Value = memoryUsage;
+                                Database.RAM_FREERAM = memoryAvailable.ToString()  + " MB"; // + this.sensorElementsDataArray.Find(f => f.szName == "System").sensorReaders.Find(f => f.szName == "Physical Memory Used").szUnit;
+                                Database.RAM_USEDRAM = memoryUsed.ToString() + " MB"; // this.sensorElementsDataArray.Find(f => f.szName == "System").sensorReaders.Find(f => f.szName == "Physical Memory Used").szUnit;
+                                Database.RAM_USAGE = (double)memoryUsage;
+
                                 // Network
-                                label_cc_TotalDL.Content = networkTotalDL.ToString() + " " + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_NETWORK_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "Total DL").szUnit;
-                                label_cc_TotalUL.Content = networkTotalUL.ToString() + " " + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_NETWORK_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "Total UP").szUnit;
-                                label_cc_CurrentDL.Content = networkCurrentDL.ToString() + " " + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_NETWORK_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "Current DL rate").szUnit;
-                                label_cc_CurrentUL.Content = networkCurrentUL.ToString() + " " + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_NETWORK_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "Current UP rate").szUnit;
+                                Database.NETWORK_DL_TOTAL = networkTotalDL.ToString() + " KB/s"; //+ this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_NETWORK_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "Total DL").szUnit;
+                                Database.NETWORK_UL_TOTAL = networkTotalUL.ToString() + " KB/s"; // + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_NETWORK_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "Total UP").szUnit;
+                                Database.NETWORK_DL_CURRENT = networkCurrentDL.ToString() + " KB/s"; // + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_NETWORK_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "Current DL rate").szUnit;
+                                Database.NETWORK_UL_CURRENT = networkCurrentUL.ToString() + " KB/s"; // + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_NETWORK_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "Current UP rate").szUnit;
 
                                 // GPU1
-                                label_cc_GPU1_Voltage.Content = GPU1_Voltage.ToString() + " " + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_GPU1_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "GPU Core Voltage").szUnit;
-                                label_cc_GPU1_Temp.Content = GPU1_Temp.ToString() + " " + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_GPU1_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "GPU Temperature").szUnit;
-                                label_cc_GPU1_Core.Content = GPU1_Core.ToString() + " " + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_GPU1_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "GPU Clock").szUnit;
-                                label_cc_GPU1_VRAM.Content = GPU1_VRAM.ToString() + " " + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_GPU1_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "GPU Memory Clock").szUnit;
-                                label_cc_GPU1_UsedVRAM.Content = GPU1_UsedVRAM.ToString() + " " + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_GPU1_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "GPU Memory Allocated").szUnit;
+                                label_cc_GPU1_Voltage.Content = GPU1_Voltage.ToString() + " V"; // + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_GPU1_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "GPU Core Voltage").szUnit;
+                                label_cc_GPU1_Temp.Content = GPU1_Temp.ToString() + " °C"; // + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_GPU1_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "GPU Temperature").szUnit;
+                                label_cc_GPU1_Core.Content = GPU1_Core.ToString() + " MHz"; // + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_GPU1_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "GPU Clock").szUnit;
+                                label_cc_GPU1_VRAM.Content = GPU1_VRAM.ToString() + " MB"; // + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_GPU1_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "GPU Memory Clock").szUnit;
+                                label_cc_GPU1_UsedVRAM.Content = GPU1_UsedVRAM.ToString() +" MB"; // + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_GPU1_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "GPU Memory Allocated").szUnit;
                                 GPU1_VRAM_UsageBar.Value = GPU1_UsedVRAMUsage;
 
                                 // GPU2
-                                label_cc_GPU2_Voltage.Content = GPU2_Voltage.ToString() + " " + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_GPU2_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "GPU Core Voltage").szUnit;
-                                label_cc_GPU2_Temp.Content = GPU2_Temp.ToString() + " " + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_GPU2_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "GPU Temperature").szUnit;
-                                label_cc_GPU2_Core.Content = GPU2_Core.ToString() + " " + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_GPU2_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "GPU Clock").szUnit;
-                                label_cc_GPU2_VRAM.Content = GPU2_VRAM.ToString() + " " + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_GPU2_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "GPU Memory Clock").szUnit;
-                                label_cc_GPU2_UsedVRAM.Content = GPU2_UsedVRAM.ToString() + " " + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_GPU2_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "GPU Memory Allocated").szUnit;
+                                label_cc_GPU2_Voltage.Content = GPU2_Voltage.ToString() + " V"; // + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_GPU2_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "GPU Core Voltage").szUnit;
+                                label_cc_GPU2_Temp.Content = GPU2_Temp.ToString() + " °C"; // + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_GPU2_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "GPU Temperature").szUnit;
+                                label_cc_GPU2_Core.Content = GPU2_Core.ToString() + " MHz"; // + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_GPU2_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "GPU Clock").szUnit;
+                                label_cc_GPU2_VRAM.Content = GPU2_VRAM.ToString() + " MB"; // + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_GPU2_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "GPU Memory Clock").szUnit;
+                                label_cc_GPU2_UsedVRAM.Content = GPU2_UsedVRAM.ToString() + " MB"; // + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_GPU2_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "GPU Memory Allocated").szUnit;
                                 GPU2_VRAM_UsageBar.Value = GPU2_UsedVRAMUsage;
 
                                 // Disk1
-                                label_cc_Disk1_ReadRate.Content = Disk1_ReadRate.ToString() + " " + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_DISK1_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "Read Rate").szUnit;
-                                label_cc_Disk1_WriteRate.Content = Disk1_WriteRate.ToString() + " " + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_DISK1_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "Write Rate").szUnit;
+                                label_cc_Disk1_ReadRate.Content = Disk1_ReadRate.ToString() + " MB/s";// +this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_DISK1_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "Read Rate").szUnit;
+                                label_cc_Disk1_WriteRate.Content = Disk1_WriteRate.ToString() + " MB/s";// + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_DISK1_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "Write Rate").szUnit;
                                 Disk1_UsageBar.Value = Disk1_DiskUsage;
                                 label_cc_Disk1_FreeSpace.Content = Disk1_FreeSpace + " GB";
                                 label_cc_Disk1_TotalSpace.Content = Disk1_TotalSpace + " GB";
                                 Disk1_SpaceUsageBar.Value = Math.Abs(Math.Round((Disk1_FreeSpace/Disk1_TotalSpace) * 100) -100);
 
                                 // Disk2
-                                label_cc_Disk2_ReadRate.Content = Disk2_ReadRate.ToString() + " " + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_DISK2_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "Read Rate").szUnit;
-                                label_cc_Disk2_WriteRate.Content = Disk2_WriteRate.ToString() + " " + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_DISK2_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "Write Rate").szUnit;
+                                label_cc_Disk2_ReadRate.Content = Disk2_ReadRate.ToString() + " MB/s";// + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_DISK2_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "Read Rate").szUnit;
+                                label_cc_Disk2_WriteRate.Content = Disk2_WriteRate.ToString() + " MB/s";// + this.sensorElementsDataArray.Find(f => f.szName.Contains(CONFIG_DISK2_SENSOR_NAME)).sensorReaders.Find(f => f.szName == "Write Rate").szUnit;
                                 Disk2_UsageBar.Value = Disk2_DiskUsage;
                                 label_cc_Disk2_FreeSpace.Content = Disk2_FreeSpace + " GB";
                                 label_cc_Disk2_TotalSpace.Content = Disk2_TotalSpace + " GB";
                                 Disk2_SpaceUsageBar.Value = Math.Abs(Math.Round((Disk2_FreeSpace/Disk2_TotalSpace) * 100) -100);
 
+                                #region Old way of handling charts
                                 // Cpu chart cleaning
-                                if (cPUChartValueList.Count >= CHARTS_NODES)
+                                /*if (cPUChartValueList.Count >= CHARTS_NODES)
                                     cPUChartValueList.Remove(cPUChartValueList[0]);
                                 cPUChartValueList.Add(new KeyValuePair<string, int>(i.ToString(), iCPUtotal_usage));
                                 CPU_UsageBar.Value = iCPUtotal_usage;
                                 CPU_Chart.DataContext = cPUChartValueList;
-                                CPU_Chart.Refresh();
-                                
+                                CPU_Chart.Refresh();*/
+
                                 // Network Chart cleaning
-                                if (networkChartValueList.Count >= CHARTS_NODES)
+                                /*if (networkChartValueList.Count >= CHARTS_NODES)
                                     networkChartValueList.Remove(networkChartValueList[0]);
                                 networkChartValueList.Add(new KeyValuePair<string, int>(i.ToString(), Convert.ToInt32(networkCurrentDL)));
                                 Network_Chart.DataContext = networkChartValueList;
-                                Network_Chart.Refresh();
+                                Network_Chart.Refresh();*/
+
+                                // Not needed now
+                                //CPU_Chart.Refresh();
+                                #endregion
+
+                                if (CONFIG_USES_CPU_CHART)
+                                {
+                                    // CPU Chart
+                                    if (Database.CPU_CHART_VALUES.Count >= CHARTS_NODES)
+                                        Database.CPU_CHART_VALUES.Remove(Database.CPU_CHART_VALUES[0]);
+                                    Database.CPU_CHART_VALUES.Add(new KeyValuePair<string, int>(i.ToString(), iCPUtotal_usage));
+                                    Database.CPU_CPUUSAGE = iCPUtotal_usage;
+                                }
+
+                                if (CONFIG_USES_NETWORK_CHART)
+                                {
+                                    // Network Chart
+                                    if (Database.NETWORK_CHART_VALUES.Count >= CHARTS_NODES)
+                                        Database.NETWORK_CHART_VALUES.Remove(Database.NETWORK_CHART_VALUES[0]);
+                                    Database.NETWORK_CHART_VALUES.Add(new KeyValuePair<string, int>(i.ToString(), Convert.ToInt32(networkCurrentDL)));
+                                }
+                                #endregion
+
                             }
                             catch(Exception )
                             {
-                                // WYJEBANEEEEEE
+                                // Honestly I dont give a shit at the moment :)
                             }
                             
                         })

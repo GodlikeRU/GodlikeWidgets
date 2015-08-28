@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Collections.ObjectModel;
+using GodlikeWidgets.Structures;
 
 namespace GodlikeWidgets.Data
 {
@@ -21,13 +22,15 @@ namespace GodlikeWidgets.Data
                 StaticPropertyChanged(null, new PropertyChangedEventArgs(propertyName));
         }
 
+      
+
         // Workaround for Updating Collections NOT USED
-        /*public static event EventHandler<PropertyChangedEventArgs> StaticCollectionPropertyChanged;
+        public static event EventHandler<CollectionChangeEventArgs> StaticCollectionPropertyChanged;
         private static void NotifyStaticCollectionPropertyChanged(string collectionName)
         {
             if (StaticCollectionPropertyChanged != null)
-                StaticCollectionPropertyChanged(null, new PropertyChangedEventArgs(collectionName));
-        }*/
+                StaticCollectionPropertyChanged(null, new CollectionChangeEventArgs( CollectionChangeAction.Refresh,collectionName));
+        }
         #endregion
 
 
@@ -236,6 +239,47 @@ namespace GodlikeWidgets.Data
             }
         }
         #endregion
+
+        #region Disks 
+ 
+        private static ObservableCollection<Disk> _DISKS;
+        public static ObservableCollection<Disk> DISKS
+        {
+            get
+            { return _DISKS; }
+            set
+            {
+                if (value != _DISKS)
+                {
+                    _DISKS = value;
+
+                    NotifyStaticPropertyChanged("DISKS");
+                }
+            }
+        }
+
+        #endregion
+
+        #region GPUS
+
+        private static ObservableCollection<GPU> _GPUS;
+        public static ObservableCollection<GPU> GPUS
+        {
+            get
+            { return _GPUS; }
+            set
+            {
+                if (value != _GPUS)
+                {
+                    _GPUS = value;
+
+                    NotifyStaticPropertyChanged("GPUS");
+                }
+            }
+        }
+        #endregion
+
+
 
     }
 

@@ -3,12 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit" xmlns:visualizationToolkit="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit" xmlns:Primitives="clr-namespace:System.Windows.Controls.DataVisualization.Charting.Primitives;assembly=System.Windows.Controls.DataVisualization.Toolkit" xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Classic" x:Class="GodlikeWidgets.MainWindow" 
         xmlns:database="clr-namespace:GodlikeWidgets.Data"
+        xmlns:structures="clr-namespace:GodlikeWidgets.Structures"
+        xmlns:local="clr-namespace:GodlikeWidgets"
         WindowStyle="None" 
         Background="Transparent" 
         AllowsTransparency="True"
         ShowInTaskbar="False"
         Title="MainWindow" Height="1060" Width="1900" Left="10" Top="10" WindowStartupLocation="Manual" Loaded="Window_Initialized" StateChanged="Window_StateChanged">
     <Window.Resources>
+        
         <ContextMenu x:Key="MainContextMenu" x:Shared="true">
             <MenuItem Command="Copy"/>
             <MenuItem Command="Paste"/>
@@ -529,18 +532,18 @@
                 <Label x:Name="label_c_SystemName_Copy18" Grid.Row="0" Content="GPU: " HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,32,0,0" FontFamily="Fira Sans"  Width="71" Height="24"/>
                 <Label x:Name="label_cc_SystemName_Copy5" Grid.Row="0" Content="NVIDIA GeForce GTX 880M 8GB" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,32,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
                 <Label x:Name="label_c_SystemName_Copy19" Grid.Row="0" Content="Voltage:" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,49,0,0" FontFamily="Fira Sans"  Width="71" Height="24"/>
-                <Label x:Name="label_cc_GPU1_Voltage" Grid.Row="0" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,49,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
+                <Label x:Name="label_cc_GPU1_Voltage" Grid.Row="0" Content="{Binding Path=(database:Database.GPUS)[0].voltage}" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,49,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
                 <Label x:Name="label_c_SystemName_Copy20" Grid.Row="0" Content="Temp:" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,66,0,0" FontFamily="Fira Sans"  Width="71" Height="24"/>
-                <Label x:Name="label_cc_GPU1_Temp" Grid.Row="0" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,66,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
+                <Label x:Name="label_cc_GPU1_Temp" Grid.Row="0" Content="{Binding Path=(database:Database.GPUS)[0].temp}" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,66,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
                 <Label x:Name="label_c_SystemName_Copy21" Grid.Row="0" Content="Core:" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,83,0,0" FontFamily="Fira Sans"  Width="71" Height="24"/>
-                <Label x:Name="label_cc_GPU1_Core" Grid.Row="0" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,83,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
+                <Label x:Name="label_cc_GPU1_Core" Grid.Row="0" Content="{Binding Path=(database:Database.GPUS)[0].coreClock}" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,83,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
                 <Label x:Name="label_c_SystemName_Copy22" Grid.Row="0" Content="VRAM:" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,100,0,0" FontFamily="Fira Sans"  Width="71" Height="24"/>
-                <Label x:Name="label_cc_GPU1_VRAM" Grid.Row="0" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,100,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
+                <Label x:Name="label_cc_GPU1_VRAM" Grid.Row="0" Content="{Binding Path=(database:Database.GPUS)[0].vramClock}" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,100,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
                 <Label x:Name="label_c_SystemName_Copy23" Grid.Row="0" Content="Used VRAM:" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,117,0,0" FontFamily="Fira Sans"  Width="80" Height="24"/>
-                <Label x:Name="label_cc_GPU1_UsedVRAM" Grid.Row="0" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,117,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
+                <Label x:Name="label_cc_GPU1_UsedVRAM" Grid.Row="0" Content="{Binding Path=(database:Database.GPUS)[0].usedVRAM}" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,117,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
                 <Label x:Name="label_c_SystemName_Copy24" Grid.Row="0" Content="Used VRAM:" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,134,0,0" FontFamily="Fira Sans"  Width="80" Height="24"/>
                 <Label x:Name="label_cc_GPU1_UsedVRAMBar" Grid.Row="0" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,134,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
-                <ProgressBar x:Name="GPU1_VRAM_UsageBar" HorizontalAlignment="Right" Height="11" Margin="0,140,14,0" Grid.Row="0" VerticalAlignment="Top" Width="163" Style="{DynamicResource ProgressBarStyle1}"/>
+                <ProgressBar Value="{Binding Path=(database:Database.GPUS)[0].usedVRAMUsage}" x:Name="GPU1_VRAM_UsageBar" HorizontalAlignment="Right" Height="11" Margin="0,140,14,0" Grid.Row="0" VerticalAlignment="Top" Width="163" Style="{DynamicResource ProgressBarStyle1}"/>
                 <Border  Grid.Row="0"  Margin="0,140,14,0" Width="163" Height="11" HorizontalAlignment="Right" VerticalAlignment="Top">
                     <TextBlock Text="{Binding ElementName=GPU1_VRAM_UsageBar, Path=Value, StringFormat={}{0:0}%}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="10" FontFamily="Fira Sans"  />
                 </Border>
@@ -552,42 +555,44 @@
                 <Label x:Name="label_c_SystemName_Copy25" Grid.Row="1" Content="GPU: " HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,73,0,0" FontFamily="Fira Sans"  Width="71" Height="24"/>
                 <Label x:Name="label_cc_SystemName_Copy6" Grid.Row="1" Content="NVIDIA GeForce GTX 880M 8GB" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,73,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
                 <Label x:Name="label_c_SystemName_Copy26" Grid.Row="1" Content="Voltage:" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,90,0,0" FontFamily="Fira Sans"  Width="71" Height="24"/>
-                <Label x:Name="label_cc_GPU2_Voltage" Grid.Row="1" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,90,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
+                <Label x:Name="label_cc_GPU2_Voltage" Grid.Row="1" Content="{Binding Path=(database:Database.GPUS)[1].voltage}" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,90,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
                 <Label x:Name="label_c_SystemName_Copy27" Grid.Row="1" Content="Temp:" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,107,0,0" FontFamily="Fira Sans"  Width="71" Height="24"/>
-                <Label x:Name="label_cc_GPU2_Temp" Grid.Row="1" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,107,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
+                <Label x:Name="label_cc_GPU2_Temp" Grid.Row="1" Content="{Binding Path=(database:Database.GPUS)[1].temp}" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,107,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
                 <Label x:Name="label_c_SystemName_Copy28" Grid.Row="1" Content="Core:" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,124,0,0" FontFamily="Fira Sans"  Width="71" Height="24"/>
-                <Label x:Name="label_cc_GPU2_Core" Grid.Row="1" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,124,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
+                <Label x:Name="label_cc_GPU2_Core" Grid.Row="1" Content="{Binding Path=(database:Database.GPUS)[1].coreClock}" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,124,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
                 <Label x:Name="label_c_SystemName_Copy29" Grid.Row="1" Content="VRAM:" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,141,0,0" FontFamily="Fira Sans"  Width="71" Height="24"/>
-                <Label x:Name="label_cc_GPU2_VRAM" Grid.Row="1" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,141,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
+                <Label x:Name="label_cc_GPU2_VRAM" Grid.Row="1" Content="{Binding Path=(database:Database.GPUS)[1].vramClock}" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,141,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
                 <Label x:Name="label_c_SystemName_Copy30" Grid.Row="1" Content="Used VRAM:" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,158,0,0" FontFamily="Fira Sans"  Width="80" Height="24"/>
-                <Label x:Name="label_cc_GPU2_UsedVRAM" Grid.Row="1" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,158,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
+                <Label x:Name="label_cc_GPU2_UsedVRAM" Grid.Row="1" Content="{Binding Path=(database:Database.GPUS)[1].usedVRAM}" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,158,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
                 <Label x:Name="label_c_SystemName_Copy31" Grid.Row="1" Content="Used VRAM:" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,175,0,0" FontFamily="Fira Sans"  Width="80" Height="24"/>
                 <Rectangle Fill="#99FFFFFF" Height="1" Margin="10,70,10,0"  Grid.Row="1" VerticalAlignment="Top"/>
-                <ProgressBar x:Name="GPU2_VRAM_UsageBar" HorizontalAlignment="Right" Height="11" Margin="0,182,14,0" Grid.Row="1" VerticalAlignment="Top" Width="163" Style="{DynamicResource ProgressBarStyle1}"/>
+                <ProgressBar Value="{Binding Path=(database:Database.GPUS)[1].usedVRAMUsage}" x:Name="GPU2_VRAM_UsageBar" HorizontalAlignment="Right" Height="11" Margin="0,182,14,0" Grid.Row="1" VerticalAlignment="Top" Width="163" Style="{DynamicResource ProgressBarStyle1}"/>
                 <Border  Grid.Row="1"  Margin="0,182,14,0" Width="163" Height="11" HorizontalAlignment="Right" VerticalAlignment="Top">
                     <TextBlock Text="{Binding ElementName=GPU2_VRAM_UsageBar, Path=Value, StringFormat={}{0:0}%}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="10" FontFamily="Fira Sans"  />
                 </Border>
             </Grid>
 
-            <Grid Grid.Row="2">
+            <Grid Grid.Row="2" >
                 <Rectangle Fill="#99000000"  Grid.Row="2" Width="Auto" Stroke="#B24D5256" Margin="0,36,0,0"/>
                 <Label x:Name="label_GPU_Copy1" Content="Disk C: Система" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,39,0,0" FontFamily="Fira Sans" Height="24" Width="261"  Grid.Row="2"/>
                 <Rectangle Fill="#99FFFFFF" Height="1" Margin="10,64,10,0"  Grid.Row="2" VerticalAlignment="Top"/>
                 <Label x:Name="label_c_SystemName_Copy32" Grid.Row="2" Content="Read Rate: " HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,67,0,0" FontFamily="Fira Sans"  Width="71" Height="24"/>
-                <Label x:Name="label_cc_Disk1_ReadRate" Grid.Row="2" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,67,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
+
+                <Label x:Name="label_cc_Disk1_ReadRate" Grid.Row="2"  Content="{Binding Path=(database:Database.DISKS)[0].readRate}" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,67,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
+               
                 <Label x:Name="label_c_SystemName_Copy33" Grid.Row="2" Content="Write Rate:" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,85,0,0" FontFamily="Fira Sans"  Width="71" Height="24"/>
-                <Label x:Name="label_cc_Disk1_WriteRate" Grid.Row="2" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,85,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
+                <Label x:Name="label_cc_Disk1_WriteRate" Grid.Row="2" Content="{Binding Path=(database:Database.DISKS)[0].writeRate}" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,85,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
                 <Label x:Name="label_c_SystemName_Copy34" Grid.Row="2" Content="Disk Usage:" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,104,0,0" FontFamily="Fira Sans"  Width="71" Height="24"/>
                 <Label x:Name="label_c_SystemName_Copy35" Grid.Row="2" Content="Total Space:" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,122,0,0" FontFamily="Fira Sans"  Width="71" Height="24"/>
-                <Label x:Name="label_cc_Disk1_TotalSpace" Grid.Row="2" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,122,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
+                <Label x:Name="label_cc_Disk1_TotalSpace" Grid.Row="2" Content="{Binding Path=(database:Database.DISKS)[0].totalSpace}" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,122,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
                 <Label x:Name="label_c_SystemName_Copy36" Grid.Row="2" Content="Free Space:" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,139,0,0" FontFamily="Fira Sans"  Width="71" Height="24"/>
-                <Label x:Name="label_cc_Disk1_FreeSpace" Grid.Row="2" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,139,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
+                <Label x:Name="label_cc_Disk1_FreeSpace" Grid.Row="2" Content="{Binding Path=(database:Database.DISKS)[0].freeSpace}" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,139,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
                 <Label x:Name="label_c_SystemName_Copy37" Grid.Row="2" Content="Space Usage:" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,156,0,0" FontFamily="Fira Sans"  Width="80" Height="24"/>
-                <ProgressBar x:Name="Disk1_UsageBar" HorizontalAlignment="Right" Height="11" Margin="0,111,14,0" Grid.Row="2" VerticalAlignment="Top" Width="163" Style="{DynamicResource ProgressBarStyle1}"/>
+                <ProgressBar Value="{Binding Path=(database:Database.DISKS)[0].diskUsage}" x:Name="Disk1_UsageBar" HorizontalAlignment="Right" Height="11" Margin="0,111,14,0" Grid.Row="2" VerticalAlignment="Top" Width="163" Style="{DynamicResource ProgressBarStyle1}"/>
                 <Border  Grid.Row="2"  Margin="0,111,14,0" Width="163" Height="11" HorizontalAlignment="Right" VerticalAlignment="Top">
                     <TextBlock Text="{Binding Value, ElementName=Disk1_UsageBar, StringFormat=\{0:0\}%}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="10" FontFamily="Fira Sans"  />
                 </Border>
-                <ProgressBar x:Name="Disk1_SpaceUsageBar" HorizontalAlignment="Right" Height="11" Margin="0,163,14,0" Grid.Row="2" VerticalAlignment="Top" Width="163" Style="{DynamicResource ProgressBarStyle1}"/>
+                <ProgressBar Value="{Binding Path=(database:Database.DISKS)[0].spaceUsage}" x:Name="Disk1_SpaceUsageBar" HorizontalAlignment="Right" Height="11" Margin="0,163,14,0" Grid.Row="2" VerticalAlignment="Top" Width="163" Style="{DynamicResource ProgressBarStyle1}"/>
                 <Border  Grid.Row="2"  Margin="0,163,14,0" Width="163" Height="11" HorizontalAlignment="Right" VerticalAlignment="Top">
                     <TextBlock Text="{Binding Value, ElementName=Disk1_SpaceUsageBar, StringFormat=\{0:0\}%}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="10" FontFamily="Fira Sans"  />
                 </Border>
@@ -598,20 +603,20 @@
                 <Label x:Name="label_GPU_Copy2" Content="Disk F: Data" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,26,0,0" FontFamily="Fira Sans" Height="24" Width="261"  Grid.Row="3"/>
                 <Rectangle Fill="#99FFFFFF" Height="1" Margin="10,51,10,0"  Grid.Row="3" VerticalAlignment="Top"/>
                 <Label x:Name="label_c_SystemName_Copy38" Grid.Row="3" Content="Read Rate: " HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,55,0,0" FontFamily="Fira Sans"  Width="71" Height="24"/>
-                <Label x:Name="label_cc_Disk2_ReadRate" Grid.Row="3" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,55,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
+                <Label x:Name="label_cc_Disk2_ReadRate" Grid.Row="3" Content="{Binding Path=(database:Database.DISKS)[1].readRate}" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,55,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
                 <Label x:Name="label_c_SystemName_Copy39" Grid.Row="3" Content="Write Rate:" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,73,0,0" FontFamily="Fira Sans"  Width="71" Height="24"/>
-                <Label x:Name="label_cc_Disk2_WriteRate" Grid.Row="3" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,73,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
+                <Label x:Name="label_cc_Disk2_WriteRate" Grid.Row="3" Content="{Binding Path=(database:Database.DISKS)[1].writeRate}" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,73,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
                 <Label x:Name="label_c_SystemName_Copy40" Grid.Row="3" Content="Disk Usage:" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,92,0,0" FontFamily="Fira Sans"  Width="71" Height="24"/>
                 <Label x:Name="label_c_SystemName_Copy41" Grid.Row="3" Content="Total Space:" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,110,0,0" FontFamily="Fira Sans"  Width="71" Height="24"/>
-                <Label x:Name="label_cc_Disk2_TotalSpace" Grid.Row="3" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,110,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
+                <Label x:Name="label_cc_Disk2_TotalSpace" Grid.Row="3" Content="{Binding Path=(database:Database.DISKS)[1].totalSpace}" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,110,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
                 <Label x:Name="label_c_SystemName_Copy42" Grid.Row="3" Content="Free Space:" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,127,0,0" FontFamily="Fira Sans"  Width="71" Height="24"/>
-                <Label x:Name="label_cc_Disk2_FreeSpace" Grid.Row="3" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,127,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
+                <Label x:Name="label_cc_Disk2_FreeSpace" Grid.Row="3" Content="{Binding Path=(database:Database.DISKS)[1].freeSpace}" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Foreground="White" Margin="81,127,0,0" FontFamily="Fira Sans" Width="190" Height="24" />
                 <Label x:Name="label_c_SystemName_Copy43" Grid.Row="3" Content="Space Usage:" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,144,0,0" FontFamily="Fira Sans"  Width="80" Height="24"/>
-                <ProgressBar x:Name="Disk2_UsageBar" HorizontalAlignment="Right" Height="11" Margin="0,99,14,0" Grid.Row="3" VerticalAlignment="Top" Width="163" Style="{DynamicResource ProgressBarStyle1}"/>
+                <ProgressBar Value="{Binding Path=(database:Database.DISKS)[1].diskUsage}" x:Name="Disk2_UsageBar" HorizontalAlignment="Right" Height="11" Margin="0,99,14,0" Grid.Row="3" VerticalAlignment="Top" Width="163" Style="{DynamicResource ProgressBarStyle1}"/>
                 <Border  Grid.Row="3"  Margin="0,99,14,0" Width="163" Height="11" HorizontalAlignment="Right" VerticalAlignment="Top">
                     <TextBlock Text="{Binding Value, ElementName=Disk2_UsageBar, StringFormat=\{0:0\}%}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="10" FontFamily="Fira Sans"  />
                 </Border>
-                <ProgressBar x:Name="Disk2_SpaceUsageBar" HorizontalAlignment="Right" Height="11" Margin="0,151,14,0" Grid.Row="3" VerticalAlignment="Top" Width="163" Style="{DynamicResource ProgressBarStyle1}"/>
+                <ProgressBar Value="{Binding Path=(database:Database.DISKS)[1].spaceUsage}" x:Name="Disk2_SpaceUsageBar" HorizontalAlignment="Right" Height="11" Margin="0,151,14,0" Grid.Row="3" VerticalAlignment="Top" Width="163" Style="{DynamicResource ProgressBarStyle1}"/>
                 <Border  Grid.Row="3"  Margin="0,151,14,0" Width="163" Height="11" HorizontalAlignment="Right" VerticalAlignment="Top">
                     <TextBlock Text="{Binding Value, ElementName=Disk2_SpaceUsageBar, StringFormat=\{0:0\}%}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="10" FontFamily="Fira Sans"  />
                 </Border>

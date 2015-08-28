@@ -1,4 +1,5 @@
 - [x] Initial work
+- [x] DataBinds instead of hard-coded labels
 - [ ] Resolution flexibility
 - [ ] Ability to move Windows
 - [ ] Code cleanup
